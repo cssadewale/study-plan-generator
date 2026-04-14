@@ -62,12 +62,17 @@ st.markdown("""
     }
 
     /* ── Sidebar ── */
-    section[data-testid="stSidebar"] {
-        background-color: #1a3a2a;
-        color: #e8f5e9;
+    [data-testid="stSidebar"] {
+    background-color: #1a3a2a !important;
     }
-    section[data-testid="stSidebar"] * {
-        color: #e8f5e9 !important;
+
+    /* Specifically target text inside the sidebar without affecting main area widgets */
+    [data-testid="stSidebarContent"] .stMarkdown, 
+    [data-testid="stSidebarContent"] p, 
+    [data-testid="stSidebarContent"] h2 {
+    color: #e8f5e9 !important;
+    }
+
     }
     section[data-testid="stSidebar"] .stSelectbox label,
     section[data-testid="stSidebar"] .stTextInput label,
@@ -238,6 +243,20 @@ st.markdown("""
     /* ── Hide Streamlit default branding ── */
     #MainMenu, footer { visibility: hidden; }
     header { visibility: hidden; }
+    /* ── Main Area Input Labels ── */
+    .stApp .stNumberInput label, 
+    .stApp .stTextInput label, 
+    .stApp .stMultiSelect label {
+    color: #1a3a2a !important; /* Your deep green 'trust' color */
+    font-weight: 700;
+    font-size: 0.95rem;
+    }
+
+    /* Ensure the number input text itself is dark */
+    .stApp input {
+    color: #1a3a2a !important;
+    }
+
 </style>
 """, unsafe_allow_html=True)
 
